@@ -4,12 +4,18 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "make -j24 V=1",
+            "command": "make -j24 V=1 -s",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "make clean",
+            "problemMatcher": [],
         }
     ]
 }
