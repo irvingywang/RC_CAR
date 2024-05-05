@@ -156,8 +156,8 @@ C_INCLUDES =  \
 -IMiddlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc \
 -IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
 -IDrivers/CMSIS/Include \
--ICar/main/Inc \
--ICar/devices/Inc
+-ICar/main \
+-ICar/devices
 
 
 # compile gcc flags
