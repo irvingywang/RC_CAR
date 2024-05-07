@@ -12,13 +12,7 @@ void loop() {
   VRX = analogRead(VRXPin);
   VRY = analogRead(VRYPin);
 
-  VRX -= 505;
-  VRY -= 504;
-  VRY *= -1;
-
-  Serial.print("x: ");
   Serial.println(VRX);
-  Serial.print("y: ");
   Serial.println(VRY);
   delay(100);
 }

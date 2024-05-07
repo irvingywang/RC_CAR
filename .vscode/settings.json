@@ -1,3 +1,6 @@
 {
-    "C_Cpp.default.configurationProvider": "none"
+    "C_Cpp.default.configurationProvider": "none",
+    "files.associations": {
+        "controller.h": "c"
+    }
 }
