@@ -16,6 +16,12 @@
             "type": "shell",
             "command": "make clean",
             "problemMatcher": [],
+        },
+        {
+            "label": "rebuild",
+            "type": "shell",
+            "command": "make clean; make -j24 V=1 -s",
+            "problemMatcher": [],
         }
     ]
 }
