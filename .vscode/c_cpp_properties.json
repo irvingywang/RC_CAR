@@ -7,7 +7,8 @@
             ],
             "defines": [
                 "STM32F407VG"
-            ]
+            ],
+            "configurationProvider": "none"
         }
     ],
     "version": 4
