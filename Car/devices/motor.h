@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include "stm32f4xx_hal.h"
 #ifndef MOTOR_H
 #define MOTOR_H
 

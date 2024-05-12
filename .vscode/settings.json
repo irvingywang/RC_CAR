@@ -1,6 +1,9 @@
 {
     "C_Cpp.default.configurationProvider": "none",
     "files.associations": {
-        "controller.h": "c"
+        "stdint.h": "c",
+        "stm32f407xx.h": "c",
+        "radio_control.h": "c",
+        "stm32f4xx_hal.h": "c"
     }
 }
