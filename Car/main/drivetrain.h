@@ -3,12 +3,19 @@
 
 #include "motor.h"
 
-struct drivetrain
+typedef struct
 {
-    struct motor left_motor;
-    struct motor right_motor;
-};
+    motor_t left_motor;
+    motor_t right_motor;
+} drivetrain_t;
+
+typedef struct
+{
+    float speed;
+    float theta;
+} kinematics_t;
 
 void drivetrain_init();
+void drivetrain_loop();
 
 #endif // DRIVETRAIN_H
