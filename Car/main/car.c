@@ -23,7 +23,19 @@ void Car_Task(void *pvParameters)
         // TODO read controller data
 
         // set motor output
-        motor_set_output(motor, 0.5f);
+        // motor_set_output(motor, 0.5f);
+
+        // testing pwm with led
+        static uint8_t motor_on = 0; // 0: off, 1: on
+        motor_on ^= 1;
+        if (motor_on)
+        {
+            motor_set_output(motor, 1.0f);
+        }
+        else
+        {
+            motor_set_output(motor, 0.0f);
+        }
 
         vTaskDelay(pdMS_TO_TICKS(1000)); // delay 1 second
     }
