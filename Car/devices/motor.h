@@ -13,7 +13,7 @@ typedef struct
     uint8_t direction;
 } motor_t;
 
-void motor_init(motor_t *motor, TIM_HandleTypeDef *htim, uint32_t channel);
-void motor_set_output(motor_t *motor, float output);
+void Motor_Init(motor_t *motor, TIM_HandleTypeDef *htim, uint32_t channel);
+void Motor_Set_Output(motor_t *motor, float output);
 
 #endif // MOTOR_H

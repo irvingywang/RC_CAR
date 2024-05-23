@@ -7,7 +7,9 @@
 #include "stm32f4xx_hal.h"
 #include "cmsis_os.h"
 
-void car_init();
+void Car_Init();
 void Car_Task(void *pvParameters);
+void Drive(float forward, float right);
+void Toggle_PWM();
 
 #endif // CAR_H

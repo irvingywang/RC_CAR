@@ -1,6 +1,6 @@
 #include "motor.h"
 
-void motor_init(motor_t *motor, TIM_HandleTypeDef *htim, uint32_t channel)
+void Motor_Init(motor_t *motor, TIM_HandleTypeDef *htim, uint32_t channel)
 {
     // Initialize the motor
     motor->htim = htim;
@@ -12,7 +12,7 @@ void motor_init(motor_t *motor, TIM_HandleTypeDef *htim, uint32_t channel)
     HAL_TIM_PWM_Start(htim, channel);
 }
 
-void motor_set_output(motor_t *motor, float output) // output is 0 to 1
+void Motor_Set_Output(motor_t *motor, float output) // output is 0 to 1
 {
     // Check range
     if (output > 1.0f)

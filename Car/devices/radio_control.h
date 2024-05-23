@@ -14,7 +14,7 @@ typedef struct controller
     uint16_t y;
 } controller_t;
 
-void radio_control_init();
-void read_packet();
+void Radio_Control_Init();
+void Radio_Control_Task();
 
 #endif // RADIO_CONTROL_H

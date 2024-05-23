@@ -3,7 +3,7 @@
 controller_t controller_g;
 GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-void radio_control_init()
+void Radio_Control_Init()
 {
     // Initialize controller
     controller_g.x = 0;
@@ -19,14 +19,15 @@ void radio_control_init()
     // HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); // TODO GPIOB not defined?
 }
 
-void read_packet()
+void Radio_Control_Task(void *pvParameters)
 {
-    // Read controller from UART RX
-    // Update controller_g
-}
 
-void radio_control_loop()
-{
-    // Loop the radio control
-    read_packet();
+    (void)pvParameters;
+
+    while (1)
+    {
+        // Update controller_g with new data
+
+        // vTaskDelay(pdMS_TO_TICKS(1000)); // delay 1 second
+    }
 }
