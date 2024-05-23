@@ -22,6 +22,24 @@
             "type": "shell",
             "command": "make clean; make -j24 V=1 -s",
             "problemMatcher": [],
+        },
+        {
+            "label": "flash",
+            "type": "shell",
+            "command": "make -j24 V=1; make flash",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "build and flash",
+            "type": "shell",
+            "command": "make -j24 V=1; make flash",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
         }
     ]
 }

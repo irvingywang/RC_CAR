@@ -1,17 +1,30 @@
 #include "car.h"
-#include "drivetrain.h"
-#include "radio_control.h"
+
+motor_t motor1;
+extern TIM_HandleTypeDef htim2;
 
 void car_init()
 {
     // Initialize the car
-    drivetrain_init();
     radio_control_init();
+
+    motor_init(&motor1, &htim2, TIM_CHANNEL_1);
+
+    // Create FreeRTOS task
+    xTaskCreate(Car_Task, "Car_Task", 128, &motor1, 1, NULL);
 }
 
-void car_loop()
+void Car_Task(void *pvParameters)
 {
-    // Loop the car
-    drivetrain_loop();
-    radio_control_loop();
+    motor_t *motor = (motor_t *)pvParameters;
+
+    while (1)
+    {
+        // TODO read controller data
+
+        // set motor output
+        motor_set_output(motor, 0.5f);
+
+        vTaskDelay(pdMS_TO_TICKS(1000)); // delay 1 second
+    }
 }

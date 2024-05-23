@@ -5,6 +5,8 @@
         "stm32f407xx.h": "c",
         "radio_control.h": "c",
         "stm32f4xx_hal.h": "c",
-        "motor.h": "c"
+        "motor.h": "c",
+        "car.h": "c",
+        "freertos.h": "c"
     }
 }

@@ -15,6 +15,7 @@
                 "target/stm32f4x.cfg"
             ],
             "rtos": "FreeRTOS",
+            "preLaunchTask": "build and flash"
         }
     ]
 }
