@@ -9,6 +9,8 @@
         "car.h": "c",
         "freertos.h": "c",
         "cmsis_os.h": "c",
-        "ios": "c"
+        "ios": "c",
+        "servo.h": "c",
+        "main.h": "c"
     }
 }

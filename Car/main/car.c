@@ -1,9 +1,10 @@
 #include "car.h"
 
-extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim2, htim3;
 
 extern controller_t controller_g;
 motor_t front_left, back_left, front_right, back_right;
+servo_t front, back;
 
 void Car_Init()
 {
@@ -14,6 +15,9 @@ void Car_Init()
     Motor_Init(&back_left, &htim2, TIM_CHANNEL_2);
     Motor_Init(&front_right, &htim2, TIM_CHANNEL_3);
     Motor_Init(&back_right, &htim2, TIM_CHANNEL_4);
+
+    Servo_Init(&front, &htim3, TIM_CHANNEL_1);
+    Servo_Init(&back, &htim3, TIM_CHANNEL_2);
 
     // Create FreeRTOS task
     xTaskCreate(Radio_Control_Task, "Radio_Control_Task", 128, NULL, 1, NULL);
@@ -62,6 +66,8 @@ void Toggle_PWM()
         Motor_Set_Output(&back_left, 1.0f);
         Motor_Set_Output(&front_right, 1.0f);
         Motor_Set_Output(&back_right, 1.0f);
+
+        // TODO set servo angle
     }
     else
     {
@@ -69,5 +75,7 @@ void Toggle_PWM()
         Motor_Set_Output(&back_left, 0.0f);
         Motor_Set_Output(&front_right, 0.0f);
         Motor_Set_Output(&back_right, 0.0f);
+
+        // TODO set servo angle
     }
 }
