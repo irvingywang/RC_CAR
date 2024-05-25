@@ -3,7 +3,9 @@
 
 #include "stm32f4xx_hal.h"
 #include <stdint.h>
+
 #define HEADER_BYTE 0xAA
+#define GPIO_PORT GPIOB
 #define CE_PIN GPIO_PIN_0  // Chip enable, PB0
 #define CSN_PIN GPIO_PIN_1 // Chip select not, PB1
 

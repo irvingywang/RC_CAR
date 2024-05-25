@@ -11,6 +11,7 @@
         "cmsis_os.h": "c",
         "ios": "c",
         "servo.h": "c",
-        "main.h": "c"
+        "main.h": "c",
+        "stm32f4xx_hal_gpio.h": "c"
     }
 }
