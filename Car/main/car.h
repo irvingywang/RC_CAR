@@ -12,5 +12,6 @@ void Car_Init();
 void Car_Task(void *pvParameters);
 void Drive(float forward, float right);
 void Toggle_PWM();
+void Oscillate_PWM();
 
 #endif // CAR_H

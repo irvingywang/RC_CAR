@@ -3,21 +3,17 @@
 extern TIM_HandleTypeDef htim2, htim3;
 
 extern controller_t controller_g;
-motor_t front_left, back_left, front_right, back_right;
-servo_t front, back;
+motor_t motor;
+servo_t steering;
 
 void Car_Init()
 {
     // Initialize the car
     Radio_Control_Init();
 
-    Motor_Init(&front_left, &htim2, TIM_CHANNEL_1);
-    Motor_Init(&back_left, &htim2, TIM_CHANNEL_2);
-    Motor_Init(&front_right, &htim2, TIM_CHANNEL_3);
-    Motor_Init(&back_right, &htim2, TIM_CHANNEL_4);
+    Motor_Init(&motor, &htim2, TIM_CHANNEL_1);
 
-    Servo_Init(&front, &htim3, TIM_CHANNEL_1);
-    Servo_Init(&back, &htim3, TIM_CHANNEL_2);
+    Servo_Init(&steering, &htim3, TIM_CHANNEL_1);
 
     // Create FreeRTOS task
     xTaskCreate(Radio_Control_Task, "Radio_Control_Task", 128, NULL, 1, NULL);
@@ -34,25 +30,17 @@ void Car_Task(void *pvParameters)
 
         // set motor output
         // Drive(controller_g.x, controller_g.y); not floats yet
-        Toggle_PWM();
+        Motor_Set_Output(&motor, 0.0f);
+        // Oscillate_PWM();
 
-        vTaskDelay(pdMS_TO_TICKS(1000)); // delay 1 second
+        vTaskDelay(pdMS_TO_TICKS(1000)); // delay in ms
     }
 }
 
 void Drive(float forward, float right)
 {
-    // Calculate motor output
-    float front_left_output = forward + right;
-    float back_left_output = forward - right;
-    float front_right_output = forward - right;
-    float back_right_output = forward + right;
-
-    // Set motor output
-    Motor_Set_Output(&front_left, front_left_output);
-    Motor_Set_Output(&back_left, back_left_output);
-    Motor_Set_Output(&front_right, front_right_output);
-    Motor_Set_Output(&back_right, back_right_output);
+    Motor_Set_Output(&motor, forward);
+    Servo_Set_Angle(&steering, right);
 }
 
 void Toggle_PWM()
@@ -62,20 +50,45 @@ void Toggle_PWM()
     motor_on ^= 1;
     if (motor_on)
     {
-        Motor_Set_Output(&front_left, 1.0f);
-        Motor_Set_Output(&back_left, 1.0f);
-        Motor_Set_Output(&front_right, 1.0f);
-        Motor_Set_Output(&back_right, 1.0f);
+        Motor_Set_Output(&motor, 1.0f);
 
         // TODO set servo angle
     }
     else
     {
-        Motor_Set_Output(&front_left, 0.0f);
-        Motor_Set_Output(&back_left, 0.0f);
-        Motor_Set_Output(&front_right, 0.0f);
-        Motor_Set_Output(&back_right, 0.0f);
+        Motor_Set_Output(&motor, 0.0f);
 
         // TODO set servo angle
+    }
+}
+
+void Oscillate_PWM()
+{
+    static uint8_t increasing = 1;
+    static float pwm_value = 0.0f;
+    static float ramp_coeff = 0.05f;
+    while (1)
+    {
+        if (increasing)
+        {
+            pwm_value += (1.0f - pwm_value) * ramp_coeff;
+            if (pwm_value >= 0.99f)
+            {
+                pwm_value = 1.0f;
+                increasing = 0;
+            }
+        }
+        else
+        {
+            pwm_value -= pwm_value * ramp_coeff;
+            if (pwm_value <= 0.1f)
+            {
+                pwm_value = 0.0f;
+                increasing = 1;
+            }
+        }
+
+        Motor_Set_Output(&motor, pwm_value);
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
