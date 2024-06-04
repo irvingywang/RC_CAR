@@ -26,6 +26,5 @@ void Servo_Set_Angle(servo_t *servo, float degrees) // degrees is -90 to 90
 
     servo->degrees = degrees;
 
-    // TODO set the duty cycle
-    // float dutyCycle = (degrees + 90.0f) / 180.0f;
+    //
 }
