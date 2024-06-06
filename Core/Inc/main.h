@@ -63,10 +63,10 @@ void Error_Handler(void);
 #define MCO_GPIO_Port GPIOA
 #define VCP_TX_Pin GPIO_PIN_2
 #define VCP_TX_GPIO_Port GPIOA
-#define CE_Pin_Pin GPIO_PIN_11
-#define CE_Pin_GPIO_Port GPIOA
-#define CSN_Pin_Pin GPIO_PIN_12
-#define CSN_Pin_GPIO_Port GPIOA
+#define NRF_CE_Pin GPIO_PIN_11
+#define NRF_CE_GPIO_Port GPIOA
+#define NRF_CSN_Pin GPIO_PIN_12
+#define NRF_CSN_GPIO_Port GPIOA
 #define SWDIO_Pin GPIO_PIN_13
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14
