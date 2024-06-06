@@ -1,7 +1,7 @@
 #ifndef SERVO_H
 #define SERVO_H
 
-#include "stm32f4xx_hal.h"
+#include "stm32l4xx_hal.h"
 #include <stdint.h>
 
 #define SERVO_MIN_DEGREES -90.0f
