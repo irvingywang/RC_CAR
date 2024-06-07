@@ -1,6 +1,6 @@
 #include "car.h"
 
-extern TIM_HandleTypeDef htim2, htim3;
+extern TIM_HandleTypeDef htim1, htim2;
 
 extern controller_t controller_g;
 motor_t motor;
@@ -11,9 +11,9 @@ void Car_Init()
     // Initialize the car
     Radio_Control_Init();
 
-    Motor_Init(&motor, &htim2, TIM_CHANNEL_1);
+    Motor_Init(&motor, &htim1, TIM_CHANNEL_1);
 
-    Servo_Init(&steering, &htim3, TIM_CHANNEL_1);
+    Servo_Init(&steering, &htim2, TIM_CHANNEL_1);
 
     // Create FreeRTOS task
     xTaskCreate(Radio_Control_Task, "Radio_Control_Task", 128, NULL, 1, NULL);

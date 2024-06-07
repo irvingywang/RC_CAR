@@ -2,32 +2,32 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "F4 Debug",
+            "name": "L4 Debug",
             "cwd": "${workspaceFolder}",
             "executable": "./build/RC_CAR.elf",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "openocd",
-            "device": "STM32F407VG",
+            "device": "STM32L432KC",
             "configFiles": [
                 "interface/stlink-v2.cfg",
-                "target/stm32f4x.cfg"
+                "target/stm32l4x.cfg"
             ],
             "rtos": "FreeRTOS",
             "preLaunchTask": "build and flash"
         },
         {
-            "name": "F4 Debug (stop at main)",
+            "name": "L4 Debug (stop at main)",
             "cwd": "${workspaceFolder}",
             "executable": "./build/RC_CAR.elf",
             "request": "launch",
             "type": "cortex-debug",
             "runToEntryPoint": "main",
             "servertype": "openocd",
-            "device": "STM32F407VG",
+            "device": "STM32L432KC",
             "configFiles": [
                 "interface/stlink-v2.cfg",
-                "target/stm32f4x.cfg"
+                "target/stm32l4x.cfg"
             ],
             "rtos": "FreeRTOS",
             "preLaunchTask": "build and flash"
