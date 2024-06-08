@@ -4,8 +4,10 @@
 #include "stm32l4xx_hal.h"
 #include <stdint.h>
 
-#define SERVO_MIN_DEGREES -90.0f
-#define SERVO_MAX_DEGREES 90.0f
+#define SERVO_MIN_DEGREES -135.0f
+#define SERVO_MAX_DEGREES 135.0f
+#define SERVO_MIN_PULSE 500  // microseconds
+#define SERVO_MAX_PULSE 2500 // microseconds
 
 typedef struct
 {
