@@ -30,10 +30,10 @@ void Car_Task(void *pvParameters)
 
         // Drive(controller_g.x, controller_g.y); not floats yet
         // Motor_Set_Output(&motor, 1.0f);
-        // Toggle_PWM();
-        Servo_Set_Angle(&steering, 135.0f);
+        Toggle_PWM();
+        // Servo_Set_Angle(&steering, 135.0f);
 
-        vTaskDelay(pdMS_TO_TICKS(3000)); // delay in ms
+        vTaskDelay(pdMS_TO_TICKS(4000)); // delay in ms
     }
 }
 
@@ -52,12 +52,12 @@ void Toggle_PWM()
     {
         Motor_Set_Output(&motor, 1.0f);
 
-        Servo_Set_Angle(&steering, 135.0f);
+        Servo_Set_Angle(&steering, 90.0f);
     }
     else
     {
         Motor_Set_Output(&motor, 0.0f);
-        Servo_Set_Angle(&steering, 0.0f);
+        Servo_Set_Angle(&steering, -90.0f);
     }
 }
 
