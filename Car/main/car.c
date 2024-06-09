@@ -13,7 +13,7 @@ void Car_Init()
 
     Motor_Init(&motor, &htim1, TIM_CHANNEL_1);
 
-    Servo_Init(&steering, &htim2, TIM_CHANNEL_1);
+    Servo_Init(&steering, &htim2, TIM_CHANNEL_1); // Pin D4
 
     // Create FreeRTOS task
     // xTaskCreate(Radio_Control_Task, "Radio_Control_Task", 128, NULL, 1, NULL);
@@ -28,11 +28,10 @@ void Car_Task(void *pvParameters)
     {
         // TODO read controller data
 
-        // set motor output
         // Drive(controller_g.x, controller_g.y); not floats yet
-        // Motor_Set_Output(&motor, 0.0f);
-        // Oscillate_PWM();
-        Toggle_PWM();
+        // Motor_Set_Output(&motor, 1.0f);
+        // Toggle_PWM();
+        Servo_Set_Angle(&steering, 135.0f);
 
         vTaskDelay(pdMS_TO_TICKS(3000)); // delay in ms
     }
